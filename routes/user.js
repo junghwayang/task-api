@@ -8,9 +8,21 @@ router.post('/users', async (req, res) => {
     
     try {
         await user.save()
-        res.status(201).send(user)
+        const token = await user.generateAuthToken()
+        res.status(201).send({ user, token })
     } catch (e) {
         res.status(400).send(e) // err표시뿐만 아니라 HTTP status를 200(OK)에서 400(Bad Request)으로 바꿔줌
+    }
+})
+
+// Login user
+router.post('/users/login', async (req, res) => {
+    try {
+        const user = await User.findByCredentials(req.body.email, req.body.password)
+        const token = await user.generateAuthToken()
+        res.send({ user, token })
+    } catch (e) {
+        res.status(400).send()
     }
 })
 
@@ -48,10 +60,16 @@ router.patch('/users/:id', async (req, res) => {
     }
 
     try {
-        const user = await User.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true})
+        // use findById instead of findByIdAndUpdate in order to make middleware consistently run
+        const user = await User.findById(req.params.id)
+
         if (!user) {
             return res.status(404).send()
         }
+
+        updates.forEach((update) => user[update] = req.body[update])
+        await user.save()
+
         res.send(user)
     } catch (e) {
         res.status(400).send(e)
