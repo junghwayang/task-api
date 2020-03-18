@@ -2,10 +2,10 @@
   "name": "task-app",
   "version": "1.0.0",
   "description": "Task manager app using Node.js, Express",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
-    "start": "node app.js",
-    "dev": "nodemon app.js"
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
   },
   "repository": {
     "type": "git",
