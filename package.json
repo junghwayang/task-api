@@ -1,5 +1,5 @@
 {
-  "name": "task-app",
+  "name": "task-api",
   "version": "1.0.0",
   "description": "Task manager app using Node.js, Express",
   "main": "index.js",
@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://rosiejh@github.com/rosiejh/task-app.git"
+    "url": "git+https://rosiejh@github.com/rosiejh/task-api.git"
   },
   "author": "Rosie",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/rosiejh/task-app/issues"
+    "url": "https://github.com/rosiejh/task-api/issues"
   },
-  "homepage": "https://github.com/rosiejh/task-app#readme",
+  "homepage": "https://github.com/rosiejh/task-api#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "express": "^4.17.1",
