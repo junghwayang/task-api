@@ -55,23 +55,10 @@ router.post('/users/logoutAll', auth, async (req, res) => {
     }
 })
 
-// Read profile
+// Read user
 router.get('/users/me', auth, async (req, res) => {
     res.send(req.user)
 })
-
-// // Read single user
-// router.get('/users/:id', async (req, res) => {
-//     try {
-//         const user = await User.findById(req.params.id)
-//         if (!user) {
-//             return res.status(404).send()
-//         }
-//         res.send(user)
-//     } catch (e) {
-//         res.status(500).send()
-//     }
-// })
 
 // Update user
 router.patch('/users/me', auth, async (req, res) => {
